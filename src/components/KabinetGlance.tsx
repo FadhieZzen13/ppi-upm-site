@@ -14,8 +14,7 @@ export function KabinetGlance() {
 
   return (
     <div className="text-center">
-      <p className="flex items-center justify-center gap-2.5 text-xs font-bold uppercase tracking-widest text-primary">
-        <span className="pennant h-4 w-12 bg-primary" aria-hidden />
+      <p className="text-xs font-bold uppercase tracking-widest text-primary">
         Kabinet Prabhadhara{site.term ? ` ${site.term}` : ""}
       </p>
       <dl className="mt-8 grid grid-cols-3 divide-x divide-border">

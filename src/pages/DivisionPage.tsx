@@ -38,8 +38,7 @@ export default function DivisionPage() {
           </Link>
           <div className="mt-6 grid gap-10 md:grid-cols-[1fr_minmax(0,420px)] md:items-center">
             <div className="order-2 md:order-1">
-              <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-primary">
-                <span className="pennant h-4 w-12 bg-primary" aria-hidden />
+              <p className="text-xs font-bold uppercase tracking-widest text-primary">
                 Divisi
               </p>
               <h1 className="mt-3 font-marker text-6xl sm:text-7xl leading-none text-foreground">{division.code}</h1>

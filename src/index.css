@@ -14,7 +14,7 @@
     --popover: 30 100% 99%;
     --popover-foreground: 0 8% 11%;
 
-    --primary: 357 53% 33%; /* #7F272B, the Kabinet pennant */
+    --primary: 357 53% 33%; /* #7F272B, maroon from the Kabinet artwork */
     --primary-foreground: 31 100% 97%;
 
     --secondary: 30 60% 93%;
@@ -59,10 +59,6 @@
   }
   .shadow-card-hover {
     box-shadow: 0 14px 30px -10px rgba(60, 20, 20, 0.22), 0 6px 10px -6px rgba(60, 20, 20, 0.08);
-  }
-  /* Maroon pennant from the Kabinet artwork, used behind small labels. */
-  .pennant {
-    clip-path: polygon(0 50%, 100% 0, 100% 100%);
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
