@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import OverviewPage from "./pages/OverviewPage";
 import ProkerPage from "./pages/ProkerPage";
 import MateriPage from "./pages/MateriPage";
+import DivisionPage from "./pages/DivisionPage";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/overview" element={<OverviewPage />} />
           <Route path="/proker" element={<ProkerPage />} />
           <Route path="/materi" element={<MateriPage />} />
+          <Route path="/divisi/:code" element={<DivisionPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

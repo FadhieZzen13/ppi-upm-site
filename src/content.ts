@@ -17,10 +17,15 @@ export interface PublicProker {
   type: "Internal" | "External";
 }
 
-export interface Pengurus {
+/** Row of the public_members view (no phone / birth date / password). */
+export interface PublicMember {
+  id: string;
   name: string;
   division: string;
-  position: "Kadep" | "Wakadep";
+  position: string; // Kadep | Wakadep | Secretary | Bendahara | Staff
+  intake: number;
+  faculty: string;
+  photo_url: string;
 }
 
 export interface LatestItem {
@@ -35,14 +40,14 @@ export interface LatestItem {
 export interface SiteContent {
   term?: string;
   email?: string;
-  dashboardUrl?: string;
   heroImage?: string;
+  kabinetImage?: string;
   home?: { eyebrow?: string; headline?: string; lead?: string };
   about?: string;
   vision?: string;
   missions?: string[];
   stats?: { label: string; value: string }[];
-  divisions?: Record<string, { name?: string; description?: string }>;
+  divisions?: Record<string, { name?: string; description?: string; photo?: string }>;
   socials?: { instagram?: string; youtube?: string; linkedin?: string; tiktok?: string };
   latest?: LatestItem[];
   sections?: { latest?: boolean; pengurus?: boolean };
@@ -66,17 +71,20 @@ export const DIVISION_COLORS: Record<Division, string> = {
   MEDIFO: "#4f46e5",
 };
 
+/** Order of the 8 tiles around the Kabinet image, clockwise from the top. */
+export const RING_ORDER: Division[] = ["BPH", "AKSI", "POSDM", "ROMAS", "HUMAS", "DANUS", "SEBURA", "MEDIFO"];
+
 export function divisionColor(code: string): string {
   return DIVISION_COLORS[code as Division] ?? "#6b7280";
 }
 
 export const DEFAULT_CONTENT: Required<Omit<SiteContent, "divisions">> & {
-  divisions: Record<Division, { name: string; description: string }>;
+  divisions: Record<Division, { name: string; description: string; photo: string }>;
 } = {
   term: "",
   email: "",
-  dashboardUrl: "",
   heroImage: "",
+  kabinetImage: "/divisions/kabinet.png", // transparent cut-out of the IG "mid feed" post
   home: {
     eyebrow: "",
     headline: "Selamat Datang",
@@ -87,14 +95,14 @@ export const DEFAULT_CONTENT: Required<Omit<SiteContent, "divisions">> & {
   missions: [],
   stats: [],
   divisions: {
-    BPH: { name: "Badan Pengurus Harian", description: "" },
-    AKSI: { name: "", description: "" },
-    POSDM: { name: "", description: "" },
-    ROMAS: { name: "", description: "" },
-    HUMAS: { name: "Hubungan Masyarakat", description: "" },
-    DANUS: { name: "Dana Usaha", description: "" },
-    SEBURA: { name: "Seni & Budaya", description: "" },
-    MEDIFO: { name: "Media & Informasi", description: "" },
+    BPH: { name: "Badan Pengurus Harian", description: "", photo: "/divisions/bph.jpg" },
+    AKSI: { name: "", description: "", photo: "/divisions/aksi.jpg" },
+    POSDM: { name: "", description: "", photo: "/divisions/posdm.jpg" },
+    ROMAS: { name: "", description: "", photo: "/divisions/romas.jpg" },
+    HUMAS: { name: "Hubungan Masyarakat", description: "", photo: "/divisions/humas.jpg" },
+    DANUS: { name: "Dana Usaha", description: "", photo: "/divisions/danus.jpg" },
+    SEBURA: { name: "Seni & Budaya", description: "", photo: "/divisions/sebura.jpg" },
+    MEDIFO: { name: "Media & Informasi", description: "", photo: "/divisions/medifo.jpg" },
   },
   socials: { instagram: "", youtube: "", linkedin: "", tiktok: "" },
   latest: [],

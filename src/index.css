@@ -1,85 +1,39 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Theme: Kabinet Prabhadhara IG series. Paper and maroon are sampled from the
+   division photos so the cut-out photos blend into the page. */
 @layer base {
   :root {
-    --background: 12 36% 98%; /* off-white */
-    --foreground: 0 80% 15%; /* deep red-brown for text */
+    --background: 31 100% 97%; /* #FFF8F0, the photo paper */
+    --foreground: 0 8% 11%; /* marker ink */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 80% 15%;
+    --card: 30 100% 99%;
+    --card-foreground: 0 8% 11%;
+    --popover: 30 100% 99%;
+    --popover-foreground: 0 8% 11%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 80% 15%;
+    --primary: 357 53% 33%; /* #7F272B, the Kabinet pennant */
+    --primary-foreground: 31 100% 97%;
 
-    --primary: 3 80% 42%; /* #ba1a14 */
-    --primary-foreground: 12 36% 98%; /* off-white */
+    --secondary: 30 60% 93%;
+    --secondary-foreground: 0 8% 11%;
+    --muted: 30 45% 92%;
+    --muted-foreground: 15 9% 38%;
+    --accent: 357 53% 33%;
+    --accent-foreground: 31 100% 97%;
 
-    --secondary: 12 36% 94%; /* lighter off-white */
-    --secondary-foreground: 0 80% 15%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 31 100% 97%;
 
-    --muted: 12 36% 92%;
-    --muted-foreground: 0 80% 40%;
+    --border: 28 35% 86%;
+    --input: 28 35% 84%;
+    --ring: 357 53% 33%;
 
-    --accent: 3 80% 42%; /* #ba1a14 */
-    --accent-foreground: 12 36% 98%;
+    --gold: 46 95% 52%; /* sticker crown */
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 12 36% 98%;
-
-    --border: 12 36% 90%;
-    --input: 12 36% 90%;
-    --ring: 3 80% 42%;
-
-    --radius: 0.625rem;
-
-    --sidebar-background: 3 80% 42%; /* #ba1a14 */
-    --sidebar-foreground: 12 36% 98%; /* off-white */
-    --sidebar-primary: 12 36% 98%;
-    --sidebar-primary-foreground: 3 80% 42%;
-    --sidebar-accent: 3 80% 52%;
-    --sidebar-accent-foreground: 12 36% 98%;
-    --sidebar-border: 3 80% 32%;
-    --sidebar-ring: 3 80% 42%;
-
-    --navy: 3 80% 42%;
-    --navy-light: 3 80% 52%;
-    --navy-dark: 3 80% 32%;
-    --red-accent: 3 80% 42%;
-    --red-accent-light: 3 80% 52%;
-    --gold: 40 90% 55%;
-  }
-
-  .dark {
-    --background: 3 80% 18%; /* deep red-brown */
-    --foreground: 12 36% 98%; /* off-white */
-    --card: 3 80% 22%;
-    --card-foreground: 12 36% 98%;
-    --popover: 3 80% 22%;
-    --popover-foreground: 12 36% 98%;
-    --primary: 12 36% 98%;
-    --primary-foreground: 3 80% 42%;
-    --secondary: 3 80% 22%;
-    --secondary-foreground: 12 36% 98%;
-    --muted: 3 80% 22%;
-    --muted-foreground: 12 36% 80%;
-    --accent: 12 36% 98%;
-    --accent-foreground: 3 80% 42%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 12 36% 98%;
-    --border: 3 80% 22%;
-    --input: 3 80% 22%;
-    --ring: 12 36% 98%;
-    --sidebar-background: 3 80% 22%;
-    --sidebar-foreground: 12 36% 98%;
-    --sidebar-primary: 12 36% 98%;
-    --sidebar-primary-foreground: 3 80% 42%;
-    --sidebar-accent: 3 80% 32%;
-    --sidebar-accent-foreground: 12 36% 98%;
-    --sidebar-border: 3 80% 12%;
-    --sidebar-ring: 12 36% 98%;
+    --radius: 0.375rem;
   }
 }
 
@@ -89,23 +43,32 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Plus Jakarta Sans Variable', sans-serif;
   }
 }
 
 @layer utilities {
-  .gradient-navy {
-    background: linear-gradient(135deg, hsl(222, 65%, 22%), hsl(222, 70%, 15%));
-  }
-  .gradient-accent {
-    background: linear-gradient(135deg, hsl(0, 72%, 51%), hsl(0, 72%, 40%));
+  .font-marker {
+    font-family: 'Rubik Marker Hatch', 'Plus Jakarta Sans Variable', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
   }
   .shadow-card {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px 0 rgba(60, 20, 20, 0.06), 0 1px 2px -1px rgba(60, 20, 20, 0.06);
   }
   .shadow-card-hover {
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 14px 30px -10px rgba(60, 20, 20, 0.22), 0 6px 10px -6px rgba(60, 20, 20, 0.08);
+  }
+  /* Maroon pennant from the Kabinet artwork, used behind small labels. */
+  .pennant {
+    clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
   }
 }
 
@@ -113,5 +76,6 @@
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

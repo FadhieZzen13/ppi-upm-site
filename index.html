@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff8f0" />
+    <style>html,body{background:#fff8f0;margin:0}</style>
     <link rel="icon" type="image/png" href="/logo.png" />
     <title>PPI UPM</title>
     <meta name="description" content="Persatuan Pelajar Indonesia Universiti Putra Malaysia" />
@@ -10,7 +12,14 @@
     <meta property="og:image" content="/logo.png" />
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Shown until the app mounts (replaced by React), so a slow connection never sees a blank page. -->
+    <div id="root">
+      <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#fff8f0;color:#7f272b;font-family:system-ui,sans-serif">
+        <img src="/logo.png" alt="" width="64" height="64" style="border-radius:9999px" />
+        <p style="margin:0;font-size:14px;font-weight:600">Memuat PPI UPM...</p>
+      </div>
+    </div>
+    <noscript><p style="text-align:center;padding:24px">Aktifkan JavaScript untuk membuka situs ini.</p></noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

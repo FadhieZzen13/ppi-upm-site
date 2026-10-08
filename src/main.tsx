@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { SiteProvider } from "./site";
 import "@fontsource-variable/plus-jakarta-sans";
+import "@fontsource/rubik-marker-hatch/400.css";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
