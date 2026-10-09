@@ -1,4 +1,5 @@
 import { useRef, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
 import { Calendar, ChevronLeft, ChevronRight, Crown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -140,26 +141,41 @@ export const STATUS: Record<ProkerStatus, { label: string; className: string }> 
   done: { label: "Selesai", className: "bg-green-600/10 text-green-800 border-green-300" },
 };
 
+export const formatProkerDate = (iso: string, month: "short" | "long" = "short") =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString("id-ID", { day: "2-digit", month, year: "numeric" });
+
+/** Proker summary; the whole card links to the proker's own page. */
 export function ProkerCard({ proker }: { proker: PublicProker }) {
-  const date = new Date(`${proker.date}T00:00:00`);
+  const cover = proker.details?.cover;
   return (
-    <Card className="overflow-hidden border-border bg-card shadow-card">
-      <div className="h-1.5 w-full bg-primary" />
-      <CardContent className="p-5">
-        <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="font-bold text-foreground line-clamp-2 break-words">{proker.name}</h3>
-          <Badge className={`${STATUS[proker.status].className} text-[10px] shrink-0 hover:bg-transparent`}>{STATUS[proker.status].label}</Badge>
-        </div>
-        <p className="text-xs text-muted-foreground mb-3">
-          {proker.division}
-          {proker.collab_divisions?.length ? ` + ${proker.collab_divisions.join(", ")}` : ""} · {proker.type}
-        </p>
-        {proker.description && <p className="text-sm text-foreground/75 line-clamp-2 mb-3">{proker.description}</p>}
-        <p className="flex items-center gap-1 text-xs text-muted-foreground">
-          <Calendar className="h-3 w-3" />
-          {date.toLocaleDateString("id-ID", { day: "2-digit", month: "short", year: "numeric" })}
-        </p>
-      </CardContent>
-    </Card>
+    <Link
+      to={`/proker/${proker.id}`}
+      className="group block h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      <Card className="h-full overflow-hidden border-border bg-card shadow-card transition-shadow group-hover:shadow-card-hover">
+        {cover ? (
+          <div className="aspect-[16/9] overflow-hidden bg-muted">
+            <img src={cover} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+          </div>
+        ) : (
+          <div className="h-1.5 w-full bg-primary" />
+        )}
+        <CardContent className="p-5">
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <h3 className="font-bold text-foreground line-clamp-2 break-words group-hover:text-primary">{proker.name}</h3>
+            <Badge className={`${STATUS[proker.status].className} text-[10px] shrink-0 hover:bg-transparent`}>{STATUS[proker.status].label}</Badge>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            {proker.division}
+            {proker.collab_divisions?.length ? ` + ${proker.collab_divisions.join(", ")}` : ""} · {proker.type}
+          </p>
+          {proker.description && <p className="text-sm text-foreground/75 line-clamp-2 mb-3">{proker.description}</p>}
+          <p className="flex items-center gap-1 text-xs text-muted-foreground">
+            <Calendar className="h-3 w-3" />
+            {formatProkerDate(proker.date)}
+          </p>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }

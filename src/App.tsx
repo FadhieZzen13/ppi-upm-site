@@ -5,6 +5,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import HomePage from "./pages/HomePage";
 import OverviewPage from "./pages/OverviewPage";
 import ProkerPage from "./pages/ProkerPage";
+import ProkerDetailPage from "./pages/ProkerDetailPage";
 import MateriPage from "./pages/MateriPage";
 import DivisionPage from "./pages/DivisionPage";
 import NotFound from "./pages/NotFound";
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/overview" element={<OverviewPage />} />
           <Route path="/proker" element={<ProkerPage />} />
+          <Route path="/proker/:id" element={<ProkerDetailPage />} />
           <Route path="/materi" element={<MateriPage />} />
           <Route path="/divisi/:code" element={<DivisionPage />} />
           <Route path="*" element={<NotFound />} />

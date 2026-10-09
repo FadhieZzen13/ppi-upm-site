@@ -15,6 +15,17 @@ export interface PublicProker {
   status: ProkerStatus;
   description: string;
   type: "Internal" | "External";
+  /** Content for the proker's own page, set on the dashboard's Public Website page. */
+  details?: ProkerDetails | null;
+}
+
+export interface ProkerDetails {
+  cover?: string;
+  body?: string;
+  gallery?: string[];
+  location?: string;
+  link?: string;
+  linkLabel?: string;
 }
 
 /** Row of the public_members view (no phone / birth date / password). */
