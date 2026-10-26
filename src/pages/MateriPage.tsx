@@ -10,7 +10,7 @@ import { ACCEPT, MATERI_READY, MAX_MB, fetchMateri, materiUrl, submitMateri, typ
 import { Container, Heading, EmptyState } from "@/components/common";
 
 const selectClass =
-  "h-10 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  "h-10 w-full rounded-md border border-input bg-background px-3 text-base sm:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 const labelClass = "text-xs font-medium text-foreground";
 
 export default function MateriPage() {
@@ -44,7 +44,7 @@ export default function MateriPage() {
         className="mb-10"
       />
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_340px] lg:items-start">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
         <section>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <div className="relative flex-1">
@@ -80,7 +80,7 @@ export default function MateriPage() {
                         {[m.course, m.faculty, m.intake ? `${m.uploader_name} (${m.intake})` : m.uploader_name].filter(Boolean).join(" · ")}
                       </p>
                     </div>
-                    <Badge variant="secondary" className="hidden sm:inline-flex text-[10px]">{m.category}</Badge>
+                    <Badge variant="secondary" className="hidden sm:inline-flex text-xs">{m.category}</Badge>
                     <span className="h-8 w-8 inline-flex items-center justify-center text-muted-foreground" aria-label={isLink ? `Buka ${m.title}` : `Unduh ${m.title}`}>
                       {isLink ? <ExternalLink className="h-4 w-4" /> : <Download className="h-4 w-4" />}
                     </span>
@@ -195,7 +195,7 @@ function UploadCard() {
                   role="tab"
                   aria-selected={mode === m}
                   onClick={() => { setMode(m); setError(""); }}
-                  className={`rounded px-2 py-1.5 text-xs font-medium transition-colors ${mode === m ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
+                  className={`rounded px-2 py-2.5 text-sm font-medium transition-colors ${mode === m ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
                 >
                   {m === "file" ? "Upload file" : "Pakai link"}
                 </button>
@@ -212,7 +212,7 @@ function UploadCard() {
               <div className="space-y-1.5">
                 <label className={labelClass} htmlFor="m-link">Link Google Drive / OneDrive</label>
                 <Input id="m-link" placeholder="https://drive.google.com/..." value={form.link} onChange={set("link")} maxLength={500} />
-                <p className="text-[11px] text-muted-foreground">Pastikan aksesnya "Anyone with the link".</p>
+                <p className="text-xs text-muted-foreground">Pastikan aksesnya "Anyone with the link".</p>
               </div>
             )}
 

@@ -11,7 +11,7 @@ import { useSite } from "@/site";
 import { Container, Heading, EmptyState, ProkerCard, STATUS } from "@/components/common";
 
 const selectClass =
-  "h-10 w-full sm:w-44 rounded-md border border-input bg-background pl-9 pr-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  "h-10 w-full sm:w-44 rounded-md border border-input bg-background pl-9 pr-3 text-base sm:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 export default function ProkerPage() {
   const site = useSite();

@@ -48,16 +48,16 @@ export default function ProkerDetailPage() {
       {/* Header: cover + key facts */}
       <section className="pt-8 pb-12 sm:pt-12">
         <Container>
-          <Link to="/proker" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground/70 hover:text-primary">
+          <Link to="/proker" className="inline-flex min-h-11 -my-3 items-center gap-1.5 text-sm font-semibold text-foreground/70 hover:text-primary">
             <ArrowLeft className="h-4 w-4" /> Semua proker
           </Link>
           <div className="mt-6 grid gap-10 md:grid-cols-[1fr_minmax(0,460px)] md:items-center">
             <div className="order-2 md:order-1">
               <div className="flex flex-wrap items-center gap-2">
-                <Link to={`/divisi/${proker.division}`} className="text-xs font-bold uppercase tracking-widest text-primary hover:underline underline-offset-4">
+                <Link to={`/divisi/${proker.division}`} className="inline-flex min-h-11 -my-3 items-center text-xs font-bold uppercase tracking-widest text-primary hover:underline underline-offset-4">
                   Proker {proker.division}
                 </Link>
-                <Badge className={`${STATUS[proker.status].className} text-[10px] hover:bg-transparent`}>{STATUS[proker.status].label}</Badge>
+                <Badge className={`${STATUS[proker.status].className} text-xs hover:bg-transparent`}>{STATUS[proker.status].label}</Badge>
               </div>
               <h1 className="mt-3 font-marker text-4xl sm:text-5xl leading-[1.08] text-foreground break-words">{proker.name}</h1>
               {proker.description && <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/80">{proker.description}</p>}

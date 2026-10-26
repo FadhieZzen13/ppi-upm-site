@@ -25,7 +25,7 @@ export function KabinetGlance() {
           </div>
         ))}
       </dl>
-      <Link to="/overview" className="mt-10 inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline underline-offset-4">
+      <Link to="/overview" className="mt-7 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-primary hover:underline underline-offset-4">
         Kenalan dengan Kabinet Prabhadhara <ArrowRight className="h-4 w-4" />
       </Link>
     </div>

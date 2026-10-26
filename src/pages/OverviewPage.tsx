@@ -49,7 +49,7 @@ export default function OverviewPage() {
         {site.email || site.whatsapp ? (
           <div className="mt-2 flex flex-col items-center gap-1">
             {site.whatsapp && (
-              <a href={waLink(site.whatsapp)} target="_blank" rel="noreferrer" className="font-semibold text-primary hover:underline">WhatsApp {site.whatsapp}</a>
+              <a href={waLink(site.whatsapp)} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center font-semibold text-primary hover:underline">WhatsApp {site.whatsapp}</a>
             )}
             {site.email && <a href={`mailto:${site.email}`} className="font-semibold text-primary hover:underline">{site.email}</a>}
           </div>

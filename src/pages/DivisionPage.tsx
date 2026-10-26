@@ -33,7 +33,7 @@ export default function DivisionPage() {
       {/* Header: division photo + intro */}
       <section className="pt-8 pb-12 sm:pt-12">
         <Container>
-          <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground/70 hover:text-primary">
+          <Link to="/" className="inline-flex min-h-11 -my-3 items-center gap-1.5 text-sm font-semibold text-foreground/70 hover:text-primary">
             <ArrowLeft className="h-4 w-4" /> Semua divisi
           </Link>
           <div className="mt-6 grid gap-10 md:grid-cols-[1fr_minmax(0,420px)] md:items-center">
@@ -86,11 +86,11 @@ export default function DivisionPage() {
 
       {/* Prev / next */}
       <nav className="border-t border-border" aria-label="Divisi lain">
-        <Container className="flex items-center justify-between py-6 text-sm font-semibold">
-          <Link to={`/divisi/${prev}`} className="inline-flex items-center gap-2 text-foreground/70 hover:text-primary">
+        <Container className="flex items-center justify-between py-3 text-sm font-semibold">
+          <Link to={`/divisi/${prev}`} className="inline-flex min-h-11 items-center gap-2 pr-4 text-foreground/70 hover:text-primary">
             <ArrowLeft className="h-4 w-4" /> {prev}
           </Link>
-          <Link to={`/divisi/${next}`} className="inline-flex items-center gap-2 text-foreground/70 hover:text-primary">
+          <Link to={`/divisi/${next}`} className="inline-flex min-h-11 items-center gap-2 pl-4 text-foreground/70 hover:text-primary">
             {next} <ArrowRight className="h-4 w-4" />
           </Link>
         </Container>

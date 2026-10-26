@@ -71,7 +71,7 @@ export function DivisionPhoto({ division, className = "", eager = false }: { div
   return (
     <div className={`h-full w-full flex flex-col items-center justify-center gap-2 bg-card ${className}`}>
       <span className="font-marker text-4xl sm:text-5xl text-foreground">{division.code}</span>
-      <span className="text-[10px] text-muted-foreground">Foto segera</span>
+      <span className="text-xs text-muted-foreground">Foto segera</span>
     </div>
   );
 }
@@ -97,7 +97,7 @@ export function MemberCard({ card }: { card: TeamCard }) {
         <p className="font-bold leading-snug text-foreground">{card.name}</p>
         {card.detail && <p className="text-xs text-muted-foreground mt-0.5">{card.detail}</p>}
         <span
-          className={`mt-2 inline-block rounded-sm px-1.5 py-0.5 text-[10px] font-semibold ${
+          className={`mt-2 inline-block rounded-sm px-1.5 py-0.5 text-xs font-semibold ${
             isLead ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/70"
           }`}
         >
@@ -123,10 +123,10 @@ export function Carousel({ children, label }: { children: ReactNode[]; label: st
       </div>
       {children.length > 2 && (
         <div className="mt-4 flex justify-end gap-2">
-          <Button variant="outline" size="icon" className="h-9 w-9 rounded-full bg-card" onClick={() => scroll(-1)} aria-label="Sebelumnya">
+          <Button variant="outline" size="icon" className="h-11 w-11 rounded-full bg-card" onClick={() => scroll(-1)} aria-label="Sebelumnya">
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon" className="h-9 w-9 rounded-full bg-card" onClick={() => scroll(1)} aria-label="Berikutnya">
+          <Button variant="outline" size="icon" className="h-11 w-11 rounded-full bg-card" onClick={() => scroll(1)} aria-label="Berikutnya">
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
@@ -163,7 +163,7 @@ export function ProkerCard({ proker }: { proker: PublicProker }) {
         <CardContent className="p-5">
           <div className="flex items-start justify-between gap-2 mb-2">
             <h3 className="font-bold text-foreground line-clamp-2 break-words group-hover:text-primary">{proker.name}</h3>
-            <Badge className={`${STATUS[proker.status].className} text-[10px] shrink-0 hover:bg-transparent`}>{STATUS[proker.status].label}</Badge>
+            <Badge className={`${STATUS[proker.status].className} text-xs shrink-0 hover:bg-transparent`}>{STATUS[proker.status].label}</Badge>
           </div>
           <p className="text-xs text-muted-foreground mb-3">
             {proker.division}

@@ -24,19 +24,19 @@ export function SiteFooter() {
             <p className="font-bold">PPI Universiti Putra Malaysia</p>
             <p className="text-primary-foreground/75">{SITE.location}</p>
             {site.email && (
-              <a href={`mailto:${site.email}`} className="block text-primary-foreground/75 hover:text-primary-foreground">{site.email}</a>
+              <a href={`mailto:${site.email}`} className="block py-2.5 text-primary-foreground/75 hover:text-primary-foreground">{site.email}</a>
             )}
             {site.whatsapp && (
-              <a href={waLink(site.whatsapp)} target="_blank" rel="noreferrer" className="block text-primary-foreground/75 hover:text-primary-foreground">
+              <a href={waLink(site.whatsapp)} target="_blank" rel="noreferrer" className="block py-2.5 text-primary-foreground/75 hover:text-primary-foreground">
                 WhatsApp {site.whatsapp}
               </a>
             )}
           </div>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Footer">
+        <nav className="flex flex-wrap justify-center gap-x-4" aria-label="Footer">
           {NAV.map((n) => (
-            <Link key={n.to} to={n.to} className="text-sm font-semibold uppercase tracking-wide text-primary-foreground/85 hover:text-primary-foreground">
+            <Link key={n.to} to={n.to} className="inline-flex min-h-11 items-center px-2 text-sm font-semibold uppercase tracking-wide text-primary-foreground/85 hover:text-primary-foreground">
               {n.label}
             </Link>
           ))}
@@ -51,7 +51,7 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={s.label}
-                className="h-9 w-9 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                className="h-11 w-11 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
               >
                 <s.icon className="h-4 w-4" />
               </a>

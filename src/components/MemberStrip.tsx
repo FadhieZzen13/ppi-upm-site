@@ -27,6 +27,7 @@ export function MemberStrip() {
                   width={320}
                   height={400}
                   decoding="async"
+                  loading={i < 6 ? "eager" : "lazy"}
                   className="aspect-[4/5] w-full object-cover transition-transform duration-300 hover:-translate-y-1"
                 />
                 <p className="mt-2 text-sm font-bold text-foreground">{p.nickname}</p>
