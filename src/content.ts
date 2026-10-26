@@ -51,6 +51,8 @@ export interface LatestItem {
 export interface SiteContent {
   term?: string;
   email?: string;
+  /** HUMAS WhatsApp, international format, e.g. "+601123376990". */
+  whatsapp?: string;
   heroImage?: string;
   kabinetImage?: string;
   home?: { eyebrow?: string; headline?: string; lead?: string };
@@ -63,6 +65,9 @@ export interface SiteContent {
   latest?: LatestItem[];
   sections?: { latest?: boolean; pengurus?: boolean };
 }
+
+/** wa.me link for a number like "+60 11-2337 6990". */
+export const waLink = (phone: string) => `https://wa.me/${phone.replace(/\D/g, "")}`;
 
 export const SITE = {
   shortName: "PPI UPM",
@@ -94,6 +99,7 @@ export const DEFAULT_CONTENT: Required<Omit<SiteContent, "divisions">> & {
 } = {
   term: "",
   email: "",
+  whatsapp: "+601123376990", // HUMAS number (the WhatsApp bot)
   heroImage: "",
   kabinetImage: "/divisions/kabinet.png", // transparent cut-out of the IG "mid feed" post
   home: {
@@ -123,15 +129,4 @@ export const DEFAULT_CONTENT: Required<Omit<SiteContent, "divisions">> & {
 export const MATERI_CATEGORIES = ["Catatan Kuliah", "Soal Ujian", "Skripsi / Tesis", "Beasiswa", "Lainnya"] as const;
 export type MateriCategory = (typeof MATERI_CATEGORIES)[number];
 
-export interface Materi {
-  id: string;
-  title: string;
-  faculty: string;
-  course: string;
-  category: MateriCategory;
-  uploader: string; // alumni / kating name
-  intake: string; // angkatan
-  url: string;
-}
-
-export const MATERI: Materi[] = [];
+// Materi items themselves live in Supabase (see src/materi.ts).

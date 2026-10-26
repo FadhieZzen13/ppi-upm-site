@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { SITE } from "@/content";
+import { SITE, waLink } from "@/content";
 import { useSite } from "@/site";
 import { Container, Heading, Pending } from "@/components/common";
 import { KabinetGrid } from "@/components/KabinetGrid";
@@ -46,8 +46,13 @@ export default function OverviewPage() {
 
       <section className="text-center">
         <h2 className="text-xl font-bold text-foreground">Ada pertanyaan?</h2>
-        {site.email ? (
-          <a href={`mailto:${site.email}`} className="mt-2 inline-block font-semibold text-primary hover:underline">{site.email}</a>
+        {site.email || site.whatsapp ? (
+          <div className="mt-2 flex flex-col items-center gap-1">
+            {site.whatsapp && (
+              <a href={waLink(site.whatsapp)} target="_blank" rel="noreferrer" className="font-semibold text-primary hover:underline">WhatsApp {site.whatsapp}</a>
+            )}
+            {site.email && <a href={`mailto:${site.email}`} className="font-semibold text-primary hover:underline">{site.email}</a>}
+          </div>
         ) : (
           <div className="mt-2"><Pending hint="Kontak belum diisi." /></div>
         )}

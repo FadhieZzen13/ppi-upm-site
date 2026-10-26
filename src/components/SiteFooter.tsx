@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Music2, Youtube } from "lucide-react";
-import { SITE } from "@/content";
+import { SITE, waLink } from "@/content";
 import { useSite } from "@/site";
 import { NAV } from "./nav";
 
@@ -24,7 +24,12 @@ export function SiteFooter() {
             <p className="font-bold">PPI Universiti Putra Malaysia</p>
             <p className="text-primary-foreground/75">{SITE.location}</p>
             {site.email && (
-              <a href={`mailto:${site.email}`} className="text-primary-foreground/75 hover:text-primary-foreground">{site.email}</a>
+              <a href={`mailto:${site.email}`} className="block text-primary-foreground/75 hover:text-primary-foreground">{site.email}</a>
+            )}
+            {site.whatsapp && (
+              <a href={waLink(site.whatsapp)} target="_blank" rel="noreferrer" className="block text-primary-foreground/75 hover:text-primary-foreground">
+                WhatsApp {site.whatsapp}
+              </a>
             )}
           </div>
         </div>

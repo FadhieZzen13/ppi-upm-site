@@ -26,6 +26,7 @@ function buildSite(remote: SiteContent, prokers: PublicProker[], members: Public
     loading: status === "loading",
     term: pick(remote.term, d.term),
     email: pick(remote.email, d.email),
+    whatsapp: pick(remote.whatsapp, d.whatsapp),
     kabinetImage: pick(remote.kabinetImage, d.kabinetImage),
     home: {
       headline: pick(remote.home?.headline, d.home.headline ?? ""),

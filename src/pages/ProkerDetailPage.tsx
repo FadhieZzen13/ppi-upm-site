@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useSite } from "@/site";
-import { Container, Heading, DivisionPhoto, ProkerCard, STATUS, formatProkerDate } from "@/components/common";
+import { Container, Heading, ProkerCard, STATUS, formatProkerDate } from "@/components/common";
 import NotFound from "./NotFound";
 
 /** Only http(s) links from the admin page become buttons. */
@@ -15,7 +15,6 @@ export default function ProkerDetailPage() {
   const { id = "" } = useParams();
   const site = useSite();
   const proker = site.prokers.find((p) => p.id === id);
-  const division = site.divisions.find((d) => d.code === proker?.division);
 
   const more = useMemo(
     () => (proker ? site.prokers.filter((p) => p.id !== proker.id && p.division === proker.division).slice(0, 3) : []),
@@ -97,9 +96,12 @@ export default function ProkerDetailPage() {
             <div className="order-1 md:order-2 w-full aspect-[4/3] overflow-hidden rounded-md border border-border bg-card shadow-card">
               {details.cover ? (
                 <img src={details.cover} alt={proker.name} className="h-full w-full object-cover" />
-              ) : division ? (
-                <DivisionPhoto division={division} eager />
-              ) : null}
+              ) : (
+                // no cover yet: the Kabinet artwork, not the division's group photo
+                <div className="flex h-full w-full items-center justify-center bg-card p-8">
+                  <img src={site.kabinetImage} alt={`Kabinet Prabhadhara ${site.term}`} className="h-full w-full object-contain" />
+                </div>
+              )}
             </div>
           </div>
         </Container>
