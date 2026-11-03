@@ -5,9 +5,11 @@ import { Container, Heading, EmptyState } from "@/components/common";
 import { MemberStrip } from "@/components/MemberStrip";
 import { KabinetGlance } from "@/components/KabinetGlance";
 import { LatestCarousel } from "@/components/LatestCarousel";
+import { usePageMeta } from "@/lib/usePageMeta";
 
 export default function HomePage() {
   const site = useSite();
+  usePageMeta({});
 
   return (
     <>

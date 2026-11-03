@@ -3,9 +3,11 @@ import { SITE, waLink } from "@/content";
 import { useSite } from "@/site";
 import { Container, Heading, Pending } from "@/components/common";
 import { KabinetGrid } from "@/components/KabinetGrid";
+import { usePageMeta } from "@/lib/usePageMeta";
 
 export default function OverviewPage() {
   const site = useSite();
+  usePageMeta({ title: "Tentang Kami", description: "Profil, visi, misi, dan divisi PPI UPM Kabinet Prabhadhara, organisasi pelajar Indonesia di Universiti Putra Malaysia." });
 
   return (
     <Container className="py-14 sm:py-20 space-y-20">

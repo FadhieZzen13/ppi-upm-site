@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useSite } from "@/site";
 import { Container, Heading, ProkerCard, STATUS, formatProkerDate } from "@/components/common";
+import { usePageMeta } from "@/lib/usePageMeta";
 import NotFound from "./NotFound";
 
 /** Only http(s) links from the admin page become buttons. */
@@ -15,6 +16,7 @@ export default function ProkerDetailPage() {
   const { id = "" } = useParams();
   const site = useSite();
   const proker = site.prokers.find((p) => p.id === id);
+  usePageMeta(proker ? { title: proker.name, description: proker.description } : null);
 
   const more = useMemo(
     () => (proker ? site.prokers.filter((p) => p.id !== proker.id && p.division === proker.division).slice(0, 3) : []),

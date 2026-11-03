@@ -8,12 +8,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MATERI_CATEGORIES, type MateriCategory } from "@/content";
 import { ACCEPT, MATERI_READY, MAX_MB, fetchMateri, materiUrl, submitMateri, type Materi } from "@/materi";
 import { Container, Heading, EmptyState } from "@/components/common";
+import { usePageMeta } from "@/lib/usePageMeta";
 
 const selectClass =
   "h-10 w-full rounded-md border border-input bg-background px-3 text-base sm:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 const labelClass = "text-xs font-medium text-foreground";
 
 export default function MateriPage() {
+  usePageMeta({ title: "Materi", description: "Catatan kuliah, soal, dan referensi yang dibagikan alumni dan kating untuk pelajar Indonesia di UPM." });
   const [items, setItems] = useState<Materi[] | null>(null);
   const [loadError, setLoadError] = useState(false);
   const [query, setQuery] = useState("");

@@ -9,12 +9,14 @@ import { SITE, type ProkerStatus } from "@/content";
 const SITE_SHORT = SITE.shortName;
 import { useSite } from "@/site";
 import { Container, Heading, EmptyState, ProkerCard, STATUS } from "@/components/common";
+import { usePageMeta } from "@/lib/usePageMeta";
 
 const selectClass =
   "h-10 w-full sm:w-44 rounded-md border border-input bg-background pl-9 pr-3 text-base sm:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 export default function ProkerPage() {
   const site = useSite();
+  usePageMeta({ title: "Proker", description: "Program kerja seluruh divisi PPI UPM: kegiatan yang akan datang, sedang berjalan, dan yang sudah selesai." });
   const [params, setParams] = useSearchParams();
   const division = params.get("divisi") ?? "all";
   const [status, setStatus] = useState<ProkerStatus | "all">("all");

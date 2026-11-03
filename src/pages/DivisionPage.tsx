@@ -5,12 +5,14 @@ import { RING_ORDER, type Division } from "@/content";
 import { useSite } from "@/site";
 import { Container, Heading, Pending, DivisionPhoto, MemberCard, Carousel, ProkerCard, EmptyState } from "@/components/common";
 import { buildTeam } from "@/team";
+import { usePageMeta } from "@/lib/usePageMeta";
 import NotFound from "./NotFound";
 
 export default function DivisionPage() {
   const { code = "" } = useParams();
   const site = useSite();
   const division = site.divisions.find((d) => d.code === code.toUpperCase());
+  usePageMeta(division ? { title: `${division.code}: ${division.name}`, description: division.description } : null);
 
   // IG photos always show; full name / batch / faculty only when the admin enabled member details.
   const team = useMemo(
